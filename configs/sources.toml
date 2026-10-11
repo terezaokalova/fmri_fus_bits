@@ -1,0 +1,36 @@
+# Pinned data sources. Parsed by fmri_fus_bits.sources; nothing here is fetched at import.
+# archive_bytes is checked against the server's Content-Range on every remote read.
+# archive_md5 is the publisher's value; partial (range) reads cannot verify it.
+
+[griggs2023_bmi]
+access = "remote_zip"
+title = "Griggs et al. 2023, Decoding motor plans using a closed-loop ultrasonic BMI"
+doi = "10.22002/pa710-cdn95"
+version = "1.0.0"
+license = "CC BY-NC 4.0"
+url = "https://data.caltech.edu/records/pa710-cdn95/files/fUS_BMI_Data.zip?download=1"
+archive_bytes = 34253258547
+archive_md5 = "6d07baffa0158c9fa9bd57c9c3d5aded"
+# CaltechDATA's CDN caches its download redirect for 4 h, but the signed storage URL
+# inside it expires after 60 s. A unique query parameter per read forces a fresh one.
+cdn_caches_signed_redirect = true
+
+[nunez_elizalde2022]
+access = "remote_zip"
+title = "Nunez-Elizalde et al. 2022, Neural correlates of blood flow measured by ultrasound"
+doi = "10.6084/m9.figshare.19316228.v1"
+version = "1"
+license = "CC BY 4.0"
+url = "https://ndownloader.figshare.com/files/34307132"
+archive_bytes = 12987471917
+archive_md5 = "f0022a18df040df258935b580180f467"
+cdn_caches_signed_redirect = false
+
+[hcp_ya_motor]
+access = "s3"
+title = "Human Connectome Project Young Adult, 1200-subject release, tfMRI MOTOR"
+terms = "WU-Minn HCP Consortium Open Access Data Use Terms"
+bucket = "hcp-openaccess"
+prefix = "HCP_1200"
+region = "us-east-1"
+aws_profile = "hcp"

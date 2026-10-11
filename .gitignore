@@ -1,0 +1,28 @@
+# Local environments and machine configuration
+.venv/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.DS_Store
+
+# Third-party checkouts, recordings, caches and generated results
+external/
+data/
+results/
+
+# Builds
+build/
+dist/
+
+# Static-analysis caches
+.mypy_cache/
+.import_linter_cache/
+
+# Informal research bookkeeping and local handoffs
+local/
