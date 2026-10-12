@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Information rates of hemodynamic signals (fMRI, functional ultrasound) under task and acquisition design"
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
-dependencies = ["numpy>=1.26", "scipy>=1.12", "remotezip>=0.12.6"]
+dependencies = ["numpy>=1.26", "scipy>=1.12", "remotezip>=0.12.6", "h5py>=3.10", "boto3>=1.34", "nibabel>=5.2"]
 
 [dependency-groups]
 dev = ["pytest>=8", "ruff>=0.9", "ipykernel>=6", "mypy>=1.15", "import-linter>=2.0", "scipy-stubs>=1.14"]
@@ -31,9 +31,15 @@ python_version = "3.12"
 strict = true
 files = ["src", "scripts"]
 
-# remotezip ships without type information.
+# These libraries ship without type information.
 [[tool.mypy.overrides]]
-module = ["remotezip"]
+module = ["remotezip", "h5py", "boto3", "boto3.*", "botocore.*"]
+ignore_missing_imports = true
+
+# nibabel's type hints are partial (e.g. CIFTI axes); treat it as untyped.
+[[tool.mypy.overrides]]
+module = ["nibabel", "nibabel.*"]
+follow_imports = "skip"
 ignore_missing_imports = true
 
 [tool.importlinter]
@@ -44,4 +50,4 @@ include_external_packages = true
 name = "Source configuration never touches the network"
 type = "forbidden"
 source_modules = ["fmri_fus_bits.sources"]
-forbidden_modules = ["remotezip", "requests"]
+forbidden_modules = ["remotezip", "requests", "boto3"]
