@@ -48,6 +48,12 @@ bash scripts/check.sh
 ```text
 src/fmri_fus_bits/   reusable, importable Python code
   sources.py         typed records for configs/sources.toml; no network access
+  information.py     mutual information of Gaussian class constellations; crossnobis
+  noise.py           white plus slow noise in trial-locked windows, cross-fitted
+  channel.py         trial-locked channel: response shape, amplitudes, Bayes classifier
+  kernels.py         hemodynamic kernels as step responses; gamma kernel fit
+  equalizers.py      per-trial information under a trial design: zero-forcing,
+                     interference as noise, decision feedback
 scripts/             repeatable entry points; no scientific logic duplicated here
 configs/             small, versioned source and experiment settings
 tests/               mathematical identities and data-integrity checks, offline

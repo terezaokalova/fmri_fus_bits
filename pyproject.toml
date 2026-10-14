@@ -51,3 +51,9 @@ name = "Source configuration never touches the network"
 type = "forbidden"
 source_modules = ["fmri_fus_bits.sources"]
 forbidden_modules = ["remotezip", "requests", "boto3"]
+
+[[tool.importlinter.contracts]]
+name = "Estimators work on arrays and never touch data access"
+type = "forbidden"
+source_modules = ["fmri_fus_bits.information", "fmri_fus_bits.noise", "fmri_fus_bits.channel", "fmri_fus_bits.kernels", "fmri_fus_bits.equalizers"]
+forbidden_modules = ["fmri_fus_bits.datasets", "remotezip", "requests", "boto3", "h5py", "nibabel"]
