@@ -61,26 +61,3 @@ data/                ignored recordings, manifests and caches
 results/             ignored generated plots, tables and run manifests
 local/               ignored research log and handoffs
 ```
-
-Modules are added with the code that needs them. Loaders handle dataset conventions and
-record provenance; estimators accept arrays and never download data. Import contracts in
-`pyproject.toml` enforce these boundaries.
-
-## Development workflow
-
-Single contributor: commits go directly to `main`, one feature or layer per commit, about
-200 changed source lines and at most about 500. Generated lockfiles are reviewed
-separately from the source-line budget.
-
-Commit messages use `type(scope): subject`, with types `feat`, `fix`, `refactor`, `docs`,
-`chore` and `test`, and a repository area such as `core`, `datasets`, `information`,
-`scripts` or `project`. Use an imperative, lowercase subject with no final period. Messages
-are plain ASCII and contain no attribution.
-
-Before every commit, run `bash scripts/check.sh`. Its five gates are `ruff format`,
-`ruff check --fix`, `mypy --strict`, `lint-imports` and `pytest`. Strict typing covers
-`src/` and `scripts/`. Only `remotezip`, which ships without type information, has an
-import-level typing exception.
-
-Tracked Markdown documents describe implementation and usage. Research notes and
-provisional interpretations stay in the ignored local log.
